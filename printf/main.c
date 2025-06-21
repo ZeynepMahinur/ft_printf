@@ -3,7 +3,7 @@
 
 int main()
 {
-    char c = ft_putchar('a');
-    ft_printf("%c", c);
+    char a[] = "123456";
+    ft_printf("%s", a);
     return (0);
 }

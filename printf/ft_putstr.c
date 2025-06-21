@@ -1,9 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zarikan <zarikan@student.42istanbul.com.t  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/21 17:11:42 by zarikan           #+#    #+#             */
+/*   Updated: 2025/06/21 17:12:04 by zarikan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
-    while (*str)
-    {
-        write (1, &(*str++), 1);
-    }
+    int     i;
+    i = 0;
+	while (str[i])
+	{
+		write (1, &(str[i]), 1);
+        i++;
+	}
+	return (i);
 }
