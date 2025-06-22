@@ -6,7 +6,7 @@
 /*   By: zarikan <zarikan@student.42istanbul.com.t  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 17:53:27 by zarikan           #+#    #+#             */
-/*   Updated: 2025/06/21 17:53:28 by zarikan          ###   ########.fr       */
+/*   Updated: 2025/06/21 19:02:59 by zarikan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 static int	formats(char c, va_list args)
 {
 	if (c == '%')
-		c += ft_percent();
+		return (ft_percent());
 	else if (c == 'd' || c == 'i')
-		c += ft_putnbr(va_arg(args, int));
+		return (ft_putnbr(va_arg(args, int)));
 	else if (c == 'X')
-		c += ft_putnbr_base(va_arg(args, int), "0123456789ABCDEF");
+		return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789ABCDEF"));
 	else if (c == 'p')
-		c += ft_putnbr_base(va_arg(args, int), "0x");
+		return (ft_putptr(va_arg(args, void *)));
 	else if (c == 'u')
-		c += ft_putnbr_base(va_arg(args, int), "0123456789");
+		return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789"));
 	else if (c == 'x')
-		c += ft_putnbr_base(va_arg(args, int), "0123456789abcdef");
+		return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789abcdef"));
 	else if (c == 'c')
-		c += ft_putchar(va_arg(args, int));
+		return (ft_putchar(va_arg(args, int)));
 	else if (c == 's')
-		c += ft_putstr(va_arg(args, char *));
+		return (ft_putstr(va_arg(args, char *)));
 	return (0);
 }
 
@@ -44,13 +44,13 @@ int	ft_printf(const char *f, ...)
 	c = 0;
 	while (f[i])
 	{
-		if (f[i] == '%' && f[i + 1])
+		if (f[i] == '%')
 		{
 			i++;
 			c += formats(f[i], args);
 		}
 		else
-			ft_putchar(f[i]);
+			c += ft_putchar(f[i]);
 		i++;
 	}
 	va_end(args);
